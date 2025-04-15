@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Cashier Voucher</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.voucher {
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+    border-radius: 5px;
+}
+
+.total {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.print-btn {
+    margin-top: 20px;
+    padding: 10px;
+    background: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    <div class="voucher">
+        <h2> City Market Cashier Voucher </h2>
+        <p>Date: <%= new Date().toLocaleDateString() %></p>
+        <p>Time: <%= new Date().toLocaleTimeString() %></p>
+
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>price</th>
+            </tr>
+            <% voucherData.items.forEach(item => { %>
+            <tr>
+                
+                <td><%= item.name %></td>
+                <td><%= item.price %>-Ks</td>
+               
+            </tr>
+            <% }); %>
+        </table>
+        
+        <h3>Total Amount: <%= voucherData.totalAmount %>-Ks</h3>
+
+        <h4>Thank You</h4>
+
+
+    <script src="/js/front.js"></script>
+</body>
+</html>

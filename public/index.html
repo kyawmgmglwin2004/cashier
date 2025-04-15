@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <style>
+         body{
+            background: linear-gradient(rgba(0.5, 0.5, 0.5, 0.5), rgba(0.5, 0.5, 0.5, 0.5)), 
+                url('/images/market.jpg');
+            /* background-image:url('/images/market.jpg') ; */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+        }
+        
+        .head{
+            color: rgb(0, 106, 255);
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        #formLogin{
+            max-width: 400px;
+            /* justify-content: center; */
+            margin: auto;
+            padding:0px 0 375px 0 ;
+        }
+        button {
+            border: none;
+            background-color: rgb(0, 106, 255);
+            color: aliceblue;
+            border-radius: 5px;
+            
+            padding: 3px 50px 3px 50px;
+
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- <img src="/images/market.jpg" alt="" id="image"> -->
+    <h1 class="head">Login Form</h1>
+    <form action="" id="formLogin">
+        <input type="text" id="userName" placeholder="User Name" name="userName" class="form-control"><br>
+        <input type="password" id="password" placeholder="Password" name="password" class="form-control"><br>
+        <button type="submit" class="float-end">Login</button>
+    </form>
+    <script>
+       document.getElementById("formLogin").addEventListener("submit", async function (event) {
+    event.preventDefault(); // Form ကို default submit မလုပ်စေဘဲ ရပ်လိုက်မယ်
+
+    const userName = document.getElementById('userName').value;
+    const password = document.getElementById('password').value;
+
+    if (!userName || !password) {
+        alert("ကျေးဇူးပြု၍ Username နှင့် Password ကိုဖြည့်ပါ");
+        return;
+    }
+
+    try {
+        const response = await fetch("http://localhost:3000/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userName, password }),
+        });
+
+        const data = await response.json();
+        if (data.success) {
+            alert("Login Success!");
+            window.location.href = "/success";
+        } else {
+            alert("Username သို့မဟုတ် Password မှားနေပါသည်!");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        alert("တစ်စုံတစ်ရာမှားယွင်းနေပါသည်။ နောက်ထပ်ကြိုးစားကြည့်ပါ။");
+    }
+});
+
+        
+    </script>
+</body>
+</html>

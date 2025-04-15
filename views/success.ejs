@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <style>
+        body{
+            /* background: linear-gradient(rgba(0.5, 0.5, 0.5, 0.5), rgba(0.5, 0.5, 0.5, 0.5)), 
+                url('/images/market.jpg'); */
+            /* background-image: url('/images/market.jpg'); */
+            background-size: cover;
+            background-position: center;
+            /* filter: brightness(0.5); */
+            background-repeat: no-repeat;
+        }
+        h1{
+            color: aquamarine;
+            font-size: 3em;
+        }
+        
+        
+        #data{
+            background-color: aquamarine;
+            color: black;
+            border-radius: 5px;
+            /* display: inline; */
+            list-style: none;
+            font-size: 1.5em;
+            padding: 10px;
+            margin-top: 10px;
+            /* display: block; */
+            /* display:-webkit-flex; */
+        
+            max-width: fit-content;
+
+        }
+        #check:hover{
+            background-color: green;
+            color: white;
+        }
+        #check{
+            margin-right: 5px;
+        }
+        ul{
+            /* display: flex; */
+
+            /* position:relative; */
+            list-style: none;
+            gap: 10px;
+            padding: 0;
+            max-width: 850px;
+        }
+        #addItem{
+            max-width: 500px;
+            /* position: fixed; */
+            margin: auto;
+            margin-top: 80px;
+            margin-bottom: 50px;
+
+        }
+        button{
+            padding: 10px 50px 10px 50px;
+            border-radius: 5px;
+            color: aliceblue;
+            /* max-width: 100%; */
+        }
+        #totalAmount{
+            max-width: 400px;
+            /* border: solid; */
+            position: fixed;
+            bottom: 60px;
+            right: 20px;
+
+            border-radius: 5px;
+            /* margin-left:850px; */
+            padding: 15px;
+            background-color: rgb(253, 127, 255);
+            color: black;
+            font-size: 1.5em;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        #select {
+            position: fixed;
+            max-width: 400px;
+            border-radius: 5px;
+            padding: 15px;
+            background-color:rgb(187, 31, 182);
+            color: black;
+            font-size: 1.5em;
+            right:20px;
+            bottom: 140px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            /* overflow-y: auto; */
+        }
+        #nav{
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index:1000;
+            margin-bottom: 10px;
+            /* scrollbar-width: none; */
+        }
+        #container{
+            margin-top: 30px;
+            
+            /* position: fixed; */
+        }
+        #view{
+            max-height: 400px;
+            overflow-y: auto;
+            scrollbar-width: none;
+            margin-top: 20px;
+        }
+        #dropdown{
+            margin-right:  100px;
+        }
+        #logout{
+            background-color: rgb(98, 98, 250);
+            border:none;
+            
+        }
+        #logout:hover{
+            background-color: rgb(227, 29, 45);
+            color: white;
+            
+        }
+        #addBt{
+            border: none;
+        }
+        #voucher{
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        #delete{
+            margin-left: 10px;
+            border: none;
+
+
+        }
+        #delete:hover{
+            transform: scale( 1.5);
+        }
+
+    </style>
+</head>
+<body>
+    <!-- <img src="./image/market.jpg" alt=""> -->
+<div id="container" >
+    <nav  id="nav" class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand">Item List</a>
+            <div class="dropdown">
+                <button class=" btn btn-primary dropdown-toggle" 
+                        data-bs-toggle="dropdown" id="dropdown"><i class="fa-solid fa-user"></i></button>
+                <ul class="dropdown-menu">
+                    <li><a href="./" class="dropdown-item">Logout</a></li>
+                    <li></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- <button class="btn bg-success mt-3" id="mama">MaMa</button> -->
+     <form action="/add" method="POST" id="addItem" >
+        <input type="text" name="name" placeholder="Item name" required class="form-control"><br>
+        <input type="number" name="price" placeholder="price" required class="form-control">
+        <button id="addBt" class=" bg-primary float-end mt-2" type="submit">Add</button>
+     </form>
+
+</div>
+    
+
+    <div id="view" class="container">
+        
+        <ul id="list" class="d-flex flex-wrap">
+            <% for(var i=0; i < data.length; i++) { %>
+            <li id="data" ><button id="check" class="btn" onclick="calculate('<%= data[i].name %>', <%= data[i].price %>)"><i class="fa-solid fa-check " ></i></button><button id="delete" class="btn float-end" onclick="deleteItem('<%= data[i].id %>')" ><i class="fa-solid fa-trash text-danger me-2"></i></button>
+                    <%= data[i].id %>. <%= data[i].name %> - <%= data[i].price %> Ks </li>
+               <% } %>
+
+         </ul>
+
+    </div>
+
+
+        <div id="select">Choice Item List</div>
+  
+    <div id="totalAmount">Total Amount: 0</div>
+    
+    <a href="/voucher"><button id="voucher" class="btn btn-success" onclick="voucherData()">Voucher</button>
+    </a>
+
+
+    
+    <script src="/js/front.js"></script>
+</body>
+</html>
