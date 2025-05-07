@@ -6,15 +6,6 @@
     <title>Login</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <style>
-         body{
-            background: linear-gradient(rgba(0.5, 0.5, 0.5, 0.5), rgba(0.5, 0.5, 0.5, 0.5)), 
-                url('/images/market.jpg');
-            /* background-image:url('/images/market.jpg') ; */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            
-        }
         
         .head{
             color: rgb(0, 106, 255);
@@ -24,9 +15,11 @@
         }
         #formLogin{
             max-width: 400px;
+            max-height: 200px;
             /* justify-content: center; */
             margin: auto;
-            padding:0px 0 375px 0 ;
+            /* padding:0px 0 375px 0 ; */
+            
         }
         button {
             border: none;
@@ -37,18 +30,33 @@
             padding: 3px 50px 3px 50px;
 
         }
+        #register{
+            text-decoration: none;
+            color: rgb(0, 106, 255);
+            font-size: 1.2em;
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+        #register:hover{
+            text-decoration: underline;
+        }
         
     </style>
 </head>
 <body>
     <!-- <img src="/images/market.jpg" alt="" id="image"> -->
     <h1 class="head">Login Form</h1>
-    <form action="" id="formLogin">
+    <form action="/login" id="formLogin" method="post">
         <input type="text" id="userName" placeholder="User Name" name="userName" class="form-control"><br>
         <input type="password" id="password" placeholder="Password" name="password" class="form-control"><br>
-        <button type="submit" class="float-end">Login</button>
+        <button type="submit" style="width: 100%;">Login</button>
+        
     </form>
-    <script>
+    <a href="/register.html" id="register">New Regisiter</a>
+    
+    <!-- <script>
        document.getElementById("formLogin").addEventListener("submit", async function (event) {
     event.preventDefault(); // Form ကို default submit မလုပ်စေဘဲ ရပ်လိုက်မယ်
 
@@ -67,13 +75,13 @@
             body: JSON.stringify({ userName, password }),
         });
 
-        const data = await response.json();
-        if (data.success) {
-            alert("Login Success!");
-            window.location.href = "/success";
-        } else {
-            alert("Username သို့မဟုတ် Password မှားနေပါသည်!");
-        }
+        // const data = await response.json();
+        // if (data.success) {
+        //     alert("Login Success!");
+        //     window.location.href = "/success";
+        // } else {
+        //     alert("Username သို့မဟုတ် Password မှားနေပါသည်!");
+        // }
     } catch (error) {
         console.error("Error:", error);
         alert("တစ်စုံတစ်ရာမှားယွင်းနေပါသည်။ နောက်ထပ်ကြိုးစားကြည့်ပါ။");
@@ -81,6 +89,6 @@
 });
 
         
-    </script>
+    </script> -->
 </body>
 </html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin view</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <style>
+        section {
+            scroll-margin-top: 80px; /* Adjust this value to match the height of your fixed header */
+        }
+        #logout {
+            color: white;
+            text-decoration: none;
+        }
+        :hover #logout {
+            text-decoration: underline;
+        }
+        
+    </style>
+    </head>
+<body>
+    <header class="bg-primary text-white p-2 fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark p-1">
+            <a class="navbar-brand" href="#">Dashboard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#usertable">User Table</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#product">Product</a></li>
+                    
+                </ul>
+                
+            </div>
+            <a href="./" class="float-end" id="logout">Logout</a>
+        </nav>
+    </header>
+    <main class="container mt-4 pt-5">
+        <section id="home" class="mb-5">
+            <div class="jumbotron">
+                <h1 class="display-4">Welcome to the Admin Dashboard</h1>
+                <p class="lead">Manage your application efficiently.</p>
+            </div>
+        </section>
+        <section id="usertable" class="mb-5">
+            <h2>User Table</h2>
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(user => { %>
+                        <tr>
+                            <td><%= user.id %></td>
+                            <td><%= user.userName %></td>
+                            <td><%= user.email %></td>
+                            <td><%= user.role %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </section>
+       
+        <section id="product" class="mb-5" style="max-width: 350px;">
+            <h2>Product List</h2>
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <% products.forEach(product => { %>
+                    <tr>
+                        <td><%= product.id %></td>
+                        <td><%= product.name %></td>
+                        <td><%= product.price %>MMK</td>
+                    </tr>
+                         
+                <% }) %>
+            
+            </table>
+        </section>
+                
+    </main>
+    <footer class="bg-dark text-white text-center p-3">
+        <p>&copy; 2025 Admin Dashboard</p>
+    </footer>
+</body>
+</html>

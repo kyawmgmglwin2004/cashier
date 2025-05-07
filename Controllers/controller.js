@@ -14,6 +14,21 @@ function run(app) {
     app.get('/', (req, res)=>{
         res.sendFile(__dirname + '/index.html')
     });
+    app.post('/registerData', middleware, (req, res)=>{
+        const {userName, password, email} = req.body;
+        db.query('INSERT INTO users (userName, password, email) VALUES (? ,  ?, ?)', [userName, password, email],
+            (err, results)=>{
+                if (err) {
+                    return res.status(500).send("Database ERROR");
+                }
+               console.log("User Registered Successfully");
+               res.redirect('/index.html')
+            }
+        )
+    });
+
+    
+    
     app.post('/login', middleware, (req, res)=>{
         const {userName, password} = req.body;
 
@@ -21,16 +36,44 @@ function run(app) {
             if (err){
                 return res.status(500).send("Database ERROR");
             }
-            if(results.length ===0){
-                return res.json({ success:false, message:"login Error"});
+            if(results.length === 0){
+                res.redirect('/index.html');
+                // return res.json({ success:false, message:"login Error"});
             } else {
-                req.session.userName = userName;
-                res.json({success:true, message:"success"});
-            }
-        })
+                const user = results[0];
+                req.session.userName = user.userName;
+                req.session.role = user.role;
 
-        
+                if(user.role === 'admin') {
+                     res.redirect('/admin');
+                    // return res.json({ success:true, message:"Admin login successful"});
+
+                } else if(user.role === 'user') {
+                    res.redirect('/success');
+                }else {
+                    return res.status(403).json({ success:false, message:"Access Denied"});
+                }
+            }
+        }); 
     });
+
+    app.get('/admin', (req, res) =>{
+        if(!req.session.userName){
+            return res.redirect('/');
+        }
+        db.query('SELECT * FROM users', (err, usersResults) =>{
+            if(err){
+                return res.status(500).send('Database Error');
+            }
+            db.query('SELECT * FROM products', (err, productsResults) =>{
+                if(err){
+                    return res.status(500).send('Database Error');
+                }
+                res.render('admin', {users: usersResults, products: productsResults});
+            });
+        });
+        
+    })
     
     app.get('/success',(req, res)=>{
         if(!req.session.userName){

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css"> 
+       
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            max-width: 400px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: blue;
+            font-size: 2em;
+        }
+
+        form {
+            background-color: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        
+
+        button {
+            background-color: #3d55df;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #2427d1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Register Form</h1>
+    <form action="/registerData" id="formRegister" method="POST">
+        <input type="text" id="userName" placeholder="User Name" name="userName" class="form-control" required><br>
+        <input type="password" id="password" placeholder="Password" name="password" class="form-control" required><br>
+        <input type="email" id="email" name="email" placeholder="Email" class="form-control" required><br><br>
+        <button type="submit" class="float-end">Regisiter</button>
+    </form>
+</body>
+</html>
