@@ -36,15 +36,21 @@ function run(app) {
             if (err){
                 return res.status(500).send("Database ERROR");
             }
-            if(results.length === 0){
+          
+             if(results.length === 0){
                 res.redirect('/index.html');
                 // return res.json({ success:false, message:"login Error"});
             } else {
                 const user = results[0];
                 req.session.userName = user.userName;
                 req.session.role = user.role;
-
-                if(user.role === 'admin') {
+                req.session.suspended = user.suspended;
+                
+                if(user.suspended) {
+                    return res.redirect("/index.html");
+                    
+                }else {
+                    if(user.role === 'admin') {
                      res.redirect('/admin');
                     // return res.json({ success:true, message:"Admin login successful"});
 
@@ -53,7 +59,11 @@ function run(app) {
                 }else {
                     return res.status(403).json({ success:false, message:"Access Denied"});
                 }
+                }
+
+                
             }
+           
         }); 
     });
 
@@ -73,7 +83,42 @@ function run(app) {
             });
         });
         
+    });
+
+    app.delete('/deleteUser/:id', middleware, (req, res)=>{
+        let id = req.params.id;
+        db.query("DELETE FROM users WHERE id = ?", [id],
+            (err)=>{
+                if(err) {
+                    return res.status(500).send("Database ERROR");
+                }
+                db.query("TRUNCATE  TABLE users AUTO_INCREMENT = 1 ", (err)=>{
+                    if(err){
+                        return res.status(500).send("Database ERROR")
+                    }
+                    res.redirect('/admin')
+                })
+            }
+        )
     })
+
+    app.post('/suspend/:id', middleware, (req, res)=>{
+        let id = req.params.id;
+        db.query("UPDATE users SET suspended = 1 WHERE id = ?", [id],
+            (err)=>{
+                return res.status(500).send('Database ERROR');
+            }
+        )
+    });
+
+    app.post('/unsuspend/:id', middleware, (req, res)=>{
+        let id = req.params.id;
+        db.query("UPDATE users SET suspended = 0 WHERE id = ?", [id],
+            (err)=>{
+                return res.status(500).send("Database ERROR");
+            }
+        )
+    });
     
     app.get('/success',(req, res)=>{
         if(!req.session.userName){
@@ -99,21 +144,12 @@ function run(app) {
         
     });
     
-    app.delete('/delete/:id', middleware, (req, res)=>{
+    app.delete('/deleteItem/:id', middleware, (req, res)=>{
         let id = req.params.id;
         db.query('DELETE FROM products WHERE id = ?', [id], (err)=> {
-            if (err) {
-                return res.status(500).send('Database Error');
-            }
-            db.query('ALTER TABLE products AUTO_INCREMENT = 1', (err)=>{
-                if(err) {
-                    return res.status(500).send('Database Error')
-                }
-                res.redirect('/success');
-            })
-
             
-        })
+                return res.status(500).send('Database Error');
+             })
 
     })
 

@@ -62,6 +62,20 @@
                             <td><%= user.userName %></td>
                             <td><%= user.email %></td>
                             <td><%= user.role %></td>
+                            <td>
+                                <div class="btn-group">
+                                    <% if (user.suspended) { %>
+                                        <button class="btn btn-warning" id="unsuspend" onclick='unsuspend(<%= user.id %>)'>Unban</button>
+
+                                   <% } else {%>
+                                        <button class="btn btn-warning" id="suspend" onclick='suspend(<%= user.id %>)'>Ban</button>
+
+                                    <% } %>
+
+                                    <button class="btn btn-danger" id="delete" onclick='deleteUser(<%= user.id %>)'>Delete</button>
+                                </div>
+                                
+                            </td>
                         </tr>
                     <% }) %>
                 </tbody>
@@ -94,5 +108,6 @@
     <footer class="bg-dark text-white text-center p-3">
         <p>&copy; 2025 Admin Dashboard</p>
     </footer>
+    <script src="/js/front.js"></script>
 </body>
 </html>

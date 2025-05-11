@@ -18,11 +18,30 @@ function updateAmount() {
     document.getElementById('totalAmount').innerText = 'Total: ' + totalAmount + "Ks";
   };
 
+  function deleteUser(id) {
+    fetch(`/deleteUser/${id}`,{
+      method:'DELETE',
+    })
+    location.reload();
+  }
+  function suspend(id) {
+    fetch(`/suspend/${id}`,{
+      method:'POST',
+    })
+    location.reload();
+  }
+  function unsuspend(id) {
+    fetch(`/unsuspend/${id}`,{
+      method:'POST',
+    })
+    location.reload();
+  }
+
   function deleteItem(id) {
-    fetch(`/delete/${id}`,{
+    fetch(`/deleteItem/${id}`,{
       method:'DELETE',
     } )
-  location.reload();
+    location.reload();
   };
 
 function voucherData() {
