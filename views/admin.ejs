@@ -16,6 +16,14 @@
         :hover #logout {
             text-decoration: underline;
         }
+        #userView {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        :hover #userView {
+            text-decoration: underline;
+        }
         
     </style>
     </head>
@@ -35,7 +43,8 @@
                 </ul>
                 
             </div>
-            <a href="./" class="float-end" id="logout">Logout</a>
+            <a href="/logout" class="float-end" id="logout">Logout</a>
+            <a href="/success" class="float-end m-2" id="userView">User View</a>
         </nav>
     </header>
     <main class="container mt-4 pt-5">
@@ -90,6 +99,7 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Price</th>
+                        <th>Stock</th>
                     </tr>
                 </thead>
                 <% products.forEach(product => { %>
@@ -97,6 +107,7 @@
                         <td><%= product.id %></td>
                         <td><%= product.name %></td>
                         <td><%= product.price %>MMK</td>
+                        <td><%= product.stock %></td>
                     </tr>
                          
                 <% }) %>
