@@ -9,6 +9,13 @@ module.exports = run;
 
 function run(app) {
     
+    function isAuthenticated(req, res, next) {
+        if (req.session && req.session.email  && !req.session.suspended) {
+            next();
+        } else {
+            res.redirect('/index.html');
+        }
+    }
     
     
     app.get('/', (req, res)=>{
@@ -30,9 +37,9 @@ function run(app) {
     
     
     app.post('/login', middleware, (req, res)=>{
-        const {userName, password} = req.body;
+        const {email, password} = req.body;
 
-        db.query('SELECT * FROM users WHERE userName = ? AND password = ?', [userName, password], (err,results)=>{
+        db.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], (err,results)=>{
             if (err){
                 return res.status(500).send("Database ERROR");
             }
@@ -42,7 +49,7 @@ function run(app) {
                 // return res.json({ success:false, message:"login Error"});
             } else {
                 const user = results[0];
-                req.session.userName = user.userName;
+                req.session.email = user.email;
                 req.session.role = user.role;
                 req.session.suspended = user.suspended;
                 
@@ -51,6 +58,7 @@ function run(app) {
                     
                 }else {
                     if(user.role === 'admin') {
+                    
                      res.redirect('/admin');
                     // return res.json({ success:true, message:"Admin login successful"});
 
@@ -67,8 +75,8 @@ function run(app) {
         }); 
     });
 
-    app.get('/admin', (req, res) =>{
-        if(!req.session.userName){
+    app.get('/admin',isAuthenticated, (req, res) =>{
+        if(req.session.role !== 'admin'){
             return res.redirect('/');
         }
         db.query('SELECT * FROM users', (err, usersResults) =>{
@@ -84,6 +92,15 @@ function run(app) {
         });
         
     });
+
+    app.get('/logout', (req, res)=>{
+        req.session.destroy(err=>{
+            if(err){
+                return res.status(500).send("Logout Fail")
+            }
+            res.redirect('/index.html');
+        });
+    } );
 
     app.delete('/deleteUser/:id', middleware, (req, res)=>{
         let id = req.params.id;
@@ -121,21 +138,29 @@ function run(app) {
     });
     
     app.get('/success',(req, res)=>{
-        if(!req.session.userName){
+        if(!req.session.email){
             return res.redirect('/')
         }
         db.query("SELECT * FROM products",(err, results)=>{
             if(err){
                 return res.status(500).send('Database Error');
             }
-            res.render('success', {data:results});
+            res.render('user-view-by-h', {data:results});
         })
        
         
     });
+
+    app.get('/profile', isAuthenticated, (req, res)=>{
+        if(!res.session.email) {
+            return res.redirect('/')
+        }
+        
+    });
+
     app.post('/add',middleware, (req, res)=>{
-        let {id, name, price } = req.body;
-        db.query('INSERT INTO products (id, name, price ) VALUES (?, ?, ?)', [ id, name, price], (err)=>{
+        let {id, name, price, stock } = req.body;
+        db.query('INSERT INTO products (id, name, price, stock ) VALUES (?, ?, ?, ?)', [ id, name, price, stock], (err)=>{
         if(err) {
             return res.status(500).send('Database Error');
         } 

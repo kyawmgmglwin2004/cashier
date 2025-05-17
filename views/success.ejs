@@ -159,8 +159,8 @@
                 <button class=" btn btn-primary dropdown-toggle" 
                         data-bs-toggle="dropdown" id="dropdown"><i class="fa-solid fa-user"></i></button>
                 <ul class="dropdown-menu">
-                    <li><a href="./" class="dropdown-item">Logout</a></li>
-                    <li></li>
+                    <li><a href="/logout" class="dropdown-item">Logout</a></li>
+                    <li><a href="/profile" class="dropdown-item">Profile</a></li>
                     
                 </ul>
             </div>
@@ -169,7 +169,8 @@
     <!-- <button class="btn bg-success mt-3" id="mama">MaMa</button> -->
      <form action="/add" method="POST" id="addItem" >
         <input type="text" name="name" placeholder="Item name" required class="form-control"><br>
-        <input type="number" name="price" placeholder="price" required class="form-control">
+        <input type="number" name="price" placeholder="price" required class="form-control"><br>
+        <input type="number"  name="stock" id="stock" placeholder="Stok" class="form-control">
         <button id="addBt" class=" bg-primary float-end mt-2" type="submit">Add</button>
      </form>
 
@@ -181,7 +182,7 @@
         <ul id="list" class="d-flex flex-wrap">
             <% for(var i=0; i < data.length; i++) { %>
             <li id="data" ><button id="check" class="btn" onclick="calculate('<%= data[i].name %>', <%= data[i].price %>)"><i class="fa-solid fa-check " ></i></button><button id="delete" class="btn float-end" onclick="deleteItem('<%= data[i].id %>')" ><i class="fa-solid fa-trash text-danger me-2"></i></button>
-                    <%= data[i].id %>. <%= data[i].name %> - <%= data[i].price %> Ks </li>
+                     <%= data[i].name %> - <%= data[i].price %> Ks </li>
                <% } %>
 
          </ul>
