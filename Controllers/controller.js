@@ -145,7 +145,7 @@ function run(app) {
             if(err){
                 return res.status(500).send('Database Error');
             }
-            res.render('success', {data:results});
+            res.render('user-view-by-h', {data:results});
         })
        
         
