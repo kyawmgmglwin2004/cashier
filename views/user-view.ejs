@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>8K Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8K Store</title>
 
     <title>FoodMart - Free eCommerce Grocery Store HTML Website Template</title>
     <meta charset="utf-8">
@@ -16,211 +16,210 @@
     <meta name="description" content="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
-      <!-- <script src="./js/bootstrap.bundle.min.js"></script> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm row row-cols-auto top-bar">
+        <div class="col-lg-3">
+          <a class="navbar-brand" href="#">Htoo</a>
+        </div>
+        <div class="col-lg-9">
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <div class="search-box d-flex align-items-center me-2">
+                <input type="text" class="form-control" placeholder="Search more items">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
 
-
-  </head>
- <body>
-    <!-- Navbar -->
-  <section class="nav-section">
-    <nav id="navbar-example2" class="navbar navbar-expand-md px-3">
-  <a class="navbar-brand" href="#"><img src="img/htoo-logo.png" class="logo" alt="logo"></a>
-  <!-- Hamburger Button -->
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <!-- Collapsible Content -->
-  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-    <!-- Search Box -->
-    <div class="search-box d-flex align-items-center me-3">
-      <input type="text" class="form-control d-none d-md-block" placeholder="Search more items">
-      <i class="fa-solid fa-magnifying-glass d-block"></i>
-    </div>
-
-    <!-- Nav Items -->
-    <ul class="nav nav-pills d-flex align-items-center justify-content-end">
-      <li class="nav-item">
-        <a class="nav-link" href="#scrollspyHeading1"><i class="fa-regular fa-user"></i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#scrollspyHeading2"><i class="fa-solid fa-language"></i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#scrollspyHeading2"><i class="fa-solid fa-cart-shopping"></i></a>
-      </li>
-    </ul>
-  </div>
-</nav>
-  </section>
-  <!-- Items Tabs -->
-  <section class="items-tab">
-    <div class="container-fluid">
-      <ul class="nav justify-content-center">
-        <div class="dropdown">
-          <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Categories
-          </a>
+            <ul class="nav nav-pills d-flex align-items-center ">
+                <li class="nav-item">
+                    <a class="nav-link" href="#scrollspyHeading1"><i class="fa-regular fa-user"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#scrollspyHeading2"><i class="fa-solid fa-language"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#scrollspyHeading2"><i class="fa-solid fa-cart-shopping"></i></a>
+                </li>
+            </ul>
+          </div>
+        </div>
         
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Fruit</a></li>
-            <li><a class="dropdown-item" href="#">Snacks</a></li>
-            <li><a class="dropdown-item" href="#">Drinks</a></li>
-          </ul>
+    </nav>
+    <nav class="nav category-nav">
+        <div class="container-fluid">
+            <ul class="nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Categories</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Fruit</a></li>
+                        <li><a class="dropdown-item" href="#">Snacks</a></li>
+                        <li><a class="dropdown-item" href="#">Drinks</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Shops</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sellers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Shipping</a>
+                </li>
+            </ul>
         </div>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Shops</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Sellers</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-disabled="true">Shipping</a>
-        </li>
-      </ul>
-    </div>
-  </section>
-
- 
-   <!-- Carousel -->
-  <section class="caro-section">
-    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="">
-          <img src="img/products/cola.jpeg" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item" data-bs-interval="">
-          <img src="img/products/pepsi.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item" data-bs-interval="">
-          <img src="img/products/7up.jpeg" class="d-block w-100" alt="...">
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="carousel-control-prev left">
-        <span class="carousel-control-prev-icon"></span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </button>
-    </div>
-  </section>
-
-  <!-- Category Section -->
-<section class="py-5 category-section">
-      <h2 class="category-title py-3">Category</h2>
-
-  <div class="card-container container-flluid">
-    <!-- Card 1 -->
-    <div class="catego-card">
-      <img src="img/products/appleavif.avif" alt="Apples">
-      <div class="card-body">
-        <a href="fruits.html" class="btn">Fruits</a>
-      </div>
-    </div>
-    <!-- Card 2 -->
-    <div class="catego-card">
-      <img src="img/products/2.jpeg" alt="Vegetables">
-      <div class="card-body">
-        <a href="#" class="btn">Vegetables</a>
-      </div>
-    </div>
-    <!-- Card 3 -->
-    <div class="catego-card">
-      <img src="img/products/Bread&Sweet/b1.jpeg" alt="Bread">
-      <div class="card-body">
-        <a href="#" class="btn">Bread</a>
-      </div>
-    </div>
-    <!-- Card 4 -->
-    <div class="catego-card">
-      <img src="img/products/milk.avif" alt="Drinks">
-      <div class="card-body">
-        <a href="#" class="btn">Milk</a>
-      </div>
-    </div>
-    <!-- Card 5 -->
-    <div class="catego-card">
-      <img src="img/products/coffee.avif" alt="Drinks">
-      <div class="card-body">
-        <a href="#" class="btn">Coffee</a>
-      </div>
-    </div>
-    <!-- Card 6 -->
-    <div class="catego-card">
-      <img src="img/products/plates.avif" alt="Drinks">
-      <div class="card-body">
-        <a href="#" class="btn">Plates</a>
-      </div>
-    </div>
-    <!-- Card 7 -->
-    <div class="catego-card">
-      <img src="img/products/rice.jpg" alt="Drinks">
-      <div class="card-body">
-        <a href="#" class="btn">Rice Varieties</a>
-      </div>
-    </div>
-    <!-- Card 8 -->
-    <div class="catego-card">
-      <img src="img/products/beer.avif" alt="Drinks">
-      <div class="card-body">
-        <a href="#" class="btn">Beer</a>
-      </div>
-    </div>
-    <!-- Card 9 -->
-    <div class="catego-card">
-      <img src="img/products/cosmetic.avif" alt="Drinks">
-      <div class="card-body">
-        <a href="#" class="btn">Cosmetic</a>
-      </div>
-    </div>
-    <!-- Card 10 -->
-    <div class="catego-card">
-      <img src="img/products/med.avif" alt="Drinks">
-      <div class="card-body">
-        <a href="#" class="btn">Medicine</a>
-      </div>
-    </div>
+    </nav>
+    <!-- HERO SECTION -->
+    <div class="hero-section d-flex">
+           <div class="container-fluid">
+             <div class="row align-items-center">
+               <div class="col-md-6 hero-content">
+                 <h1>Welcome to <span class="text-primary">Htoo</span> Market</h1>
+                 <p class="lead">Your one-stop shop for fresh groceries, snacks, drinks, and more!</p>
+                 <a href="#" class="btn btn-primary btn-lg mt-3">Shop Now</a>
+               </div>
+               <div class="col-md-6 hero-img-container">
+                 <img src="img/products/model-1.png" alt="Hero Image" class="hero-img">
+               </div>
+             </div>
+           </div>
   </div>
-</section>
 
-<!-- Form Section -->
-<section class="py-5">
-  <div class="container discount">
-    <div class="row">
-      <div class="col p-5">
-        <h1>Get <span>25% Discount</span> on your first purchase</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictumst amet, metus, sit massa posuere maecenas. At tellus ut nunc amet vel egestas.</p>
+    <section class="category-section ">
+        <h2 class="category-title ">Category</h2>
+
+        <div class="card-container">
+            <div class="catego-card">
+                <img src="img/products/appleavif.avif" alt="Apples">
+                <div class="card-body">
+                    <a href="fruits.html" class="btn">Fruits</a>
+                </div>
+            </div>
+            <div class="catego-card">
+                <img src="img/products/2.jpeg" alt="Vegetables">
+                <div class="card-body">
+                    <a href="#" class="btn">Vegetables</a>
+                </div>
+            </div>
+            <div class="catego-card">
+                <img src="img/products/Bread&Sweet/b1.jpeg" alt="Bread">
+                <div class="card-body">
+                    <a href="#" class="btn">Bread</a>
+                </div>
+            </div>
+            <div class="catego-card">
+                <img src="img/products/milk.avif" alt="Drinks">
+                <div class="card-body">
+                    <a href="#" class="btn">Milk</a>
+                </div>
+            </div>
+            <div class="catego-card">
+                <img src="img/products/coffee.avif" alt="Drinks">
+                <div class="card-body">
+                    <a href="#" class="btn">Coffee</a>
+                </div>
+            </div>
+            <div class="catego-card">
+                <img src="img/products/plates.avif" alt="Drinks">
+                <div class="card-body">
+                    <a href="#" class="btn">Plates</a>
+                </div>
+            </div>
+            <div class="catego-card">
+                <img src="img/products/rice.jpg" alt="Drinks">
+                <div class="card-body">
+                    <a href="#" class="btn">Rice Varieties</a>
+                </div>
+            </div>
+            <div class="catego-card">
+                <img src="img/products/beer.avif" alt="Drinks">
+                <div class="card-body">
+                    <a href="#" class="btn">Beer</a>
+                </div>
+            </div>
+            <div class="catego-card">
+                <img src="img/products/cosmetic.avif" alt="Drinks">
+                <div class="card-body">
+                    <a href="#" class="btn">Cosmetic</a>
+                </div>
+            </div>
+            <div class="catego-card">
+                <img src="img/products/med.avif" alt="Drinks">
+                <div class="card-body">
+                    <a href="#" class="btn">Medicine</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Discount Sesstion -->
+    <section class="py-5 discount-sec">
+        <div class="container discount">
+            <div class="row align-items-center">
+                <div class="col-md-6 p-5 discount-text">
+                    <h1>Get <span>25% Discount</span> on your first purchase</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictumst amet, metus, sit massa posuere maecenas. At tellus ut nunc amet vel egestas.</p>
+                </div>
+                <div class="col-md-6 p-5 discount-img ">
+                    <img src="img/products/discount.jpeg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /Discount Sesstion -->
+
+    <section class="py-3">
+      <div class="container-lg">
+        <div class="row">
+          <div class="col-md-12">
+
+            <div class="banner-blocks">
+            
+              <div class="banner-ad d-flex align-items-center large bg-info block-1" style="background: url('img/products/lipstick.jpeg') no-repeat; background-size: contain;">
+                <div class="banner-content p-5">
+                  <div class="content-wrapper text-light">
+                    <h3 class="banner-title text-light">Items on SALE</h3>
+                    <p>Discounts up to 30%</p>
+                    <a href="#" class="btn-link text-white">Shop Now</a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="banner-ad bg-success-subtle block-2" style="background:url('images/banner-ad-2.jpg') no-repeat;background-size: cover">
+                <div class="banner-content align-items-center p-5">
+                  <div class="content-wrapper text-light">
+                    <h3 class="banner-title text-light">Combo offers</h3>
+                    <p>Discounts up to 50%</p>
+                    <a href="#" class="btn-link text-white">Shop Now</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="banner-ad bg-danger block-3" style="background:url('images/banner-ad-3.jpg') no-repeat;background-size: cover">
+                <div class="banner-content align-items-center p-5">
+                  <div class="content-wrapper text-light">
+                    <h3 class="banner-title text-light">Discount Coupons</h3>
+                    <p>Discounts up to 40%</p>
+                    <a href="#" class="btn-link text-white">Shop Now</a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <!-- / Banner Blocks -->
+              
+          </div>
+        </div>
       </div>
-      <div class="col p-5">
-        <form>
-          <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input type="text"
-              class="form-control form-control-lg" name="name" id="name" placeholder="Name">
-          </div>
-          <div class="mb-3">
-            <label for="" class="form-label">Email</label>
-            <input type="email" class="form-control form-control-lg" name="email" id="email" placeholder="abc@mail.com">
-          </div>
-          <div class="form-check form-check-inline mb-3">
-            <label class="form-check-label" for="subscribe">
-            <input class="form-check-input" type="checkbox" id="subscribe" value="subscribe">
-            Subscribe to the newsletter</label>
-          </div>
-          <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-dark btn-lg">Submit</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-<footer>
-  <h5>About Us</h5>
-</footer>
- 
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
- </body>
+    </section>
+
+    
+    <footer>
+        <h5>About Us</h5>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
 </html>
